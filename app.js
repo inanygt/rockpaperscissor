@@ -45,4 +45,23 @@ function game() {
       }
    }
 
-console.log(game()); 
+// console.log(game()); 
+
+// Rps-ui 
+
+const button1 = document.querySelector("#button-1")
+const button2 = document.querySelector("#button-2")
+const button3 = document.querySelector("#button-3")
+
+button1.addEventListener("click", function() {
+   console.log("Rock")
+})
+
+button2.addEventListener("click", function() {
+   console.log("Paper")
+})
+
+button3.addEventListener("click", function() {
+   console.log("Scissors")
+})
+
