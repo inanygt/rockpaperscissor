@@ -9,23 +9,28 @@ function getComputerChoice() {
 let playerScore = 0;
 let computerScore = 0;
 
+let pScore = document.querySelector("#player-score")
+let cScore = document.querySelector("#computer-score")
+let textScore = document.querySelector("#game-text")
+
+pScore.innerText = playerScore;
+cScore.innerText = computerScore;
+
 // function that assigns the winner of a round
 
 function playRound(playerSelection, computerSelection) {
    if (playerSelection == computerSelection) {
-      playerScore++;
-      computerScore++;
-      return "it's a tie";
+      textScore.innerText = "it's a tie"
    } else if (
    (playerSelection == "Rock" && computerSelection == "Scissors") || 
    (playerSelection == "Paper" && computerSelection == "Rock") ||
    (playerSelection == "Scissors" && computerSelection == "Paper") 
    ){
-      playerScore++;
-      return "you win!";
+      textScore.innerText = "You win!"
+      pScore.innerText = parseInt(pScore.innerText) + 1;
    } else {
-         computerScore++;
-         return "You lose";
+         textScore.innerText = "You lose!"
+         cScore.innerText = parseInt(cScore.innerText) + 1;
       }
 }
 
@@ -33,8 +38,8 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
       for (let i = 0; i < 5; i++) {
-      console.log(playRound(prompt(), getComputerChoice()));
-      console.log(playerScore, computerScore);
+      // console.log(playRound(prompt(), getComputerChoice()));
+      // console.log(playerScore, computerScore);
       }
       if (playerScore > computerScore) {
          return "You win the game!"
@@ -54,14 +59,15 @@ const button2 = document.querySelector("#button-2")
 const button3 = document.querySelector("#button-3")
 
 button1.addEventListener("click", function() {
-   console.log("Rock")
+   playRound("Rock", getComputerChoice());
 })
 
 button2.addEventListener("click", function() {
-   console.log("Paper")
+   playRound("Paper", getComputerChoice());
+
 })
 
 button3.addEventListener("click", function() {
-   console.log("Scissors")
+   playRound("Scissors", getComputerChoice());
 })
 
