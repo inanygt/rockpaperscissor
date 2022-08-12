@@ -99,3 +99,9 @@ transition: 150ms;
    font-size: 3rem;
    /* background: green;  */
 }
+
+/* RESULTS  */
+
+#result {
+   margin-top: 1rem;
+}

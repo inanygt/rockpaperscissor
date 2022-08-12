@@ -15,6 +15,10 @@ let textScore = document.querySelector("#game-text")
 
 pScore.innerText = playerScore;
 cScore.innerText = computerScore;
+textScore.innerText = "Let's go!"
+
+let result = document.querySelector("#result")
+result.innerText = "Let the games begin!"
 
 // function that assigns the winner of a round
 
@@ -28,29 +32,29 @@ function playRound(playerSelection, computerSelection) {
    ){
       textScore.innerText = "You win!"
       pScore.innerText = parseInt(pScore.innerText) + 1;
+
+      if (pScore.innerText == 5) {
+         disableButtons();
+         result.innerText = "You won! Reload to play again!"
+      }
+
+
    } else {
          textScore.innerText = "You lose!"
          cScore.innerText = parseInt(cScore.innerText) + 1;
+
+         if(cScore.innerText == 5) {
+            disableButtons();
+            result.innertext = "You lost! Reload to play again!"
+         }
       }
 }
 
-// Function to play 5 rounds and keep score and give the winner at the end
-
-function game() {
-      for (let i = 0; i < 5; i++) {
-      // console.log(playRound(prompt(), getComputerChoice()));
-      // console.log(playerScore, computerScore);
-      }
-      if (playerScore > computerScore) {
-         return "You win the game!"
-      } else if (playerScore < computerScore) {
-         return "You lost the game"
-      } else {
-         return "it's a tie! "
-      }
-   }
-
-// console.log(game()); 
+function disableButtons() {
+   document.querySelector("#button-1").disabled = true;
+   document.querySelector("#button-2").disabled = true;
+   document.querySelector("#button-3").disabled = true;
+}
 
 // Rps-ui 
 
