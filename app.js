@@ -34,21 +34,24 @@ function playRound(playerSelection, computerSelection) {
       pScore.innerText = parseInt(pScore.innerText) + 1;
 
       if (pScore.innerText == 5) {
+         result.innerText = "You won! Reload to play again!";
+         winAudio.play();
          disableButtons();
-         result.innerText = "You won! Reload to play again!"
       }
-
-
    } else {
          textScore.innerText = "You lose!"
          cScore.innerText = parseInt(cScore.innerText) + 1;
 
          if(cScore.innerText == 5) {
+            result.innerText = "You lost! Reload to play again!";
+            loseAudio.play();
             disableButtons();
-            result.innertext = "You lost! Reload to play again!"
          }
       }
 }
+
+
+// Disable buttons
 
 function disableButtons() {
    document.querySelector("#button-1").disabled = true;
@@ -56,7 +59,15 @@ function disableButtons() {
    document.querySelector("#button-3").disabled = true;
 }
 
-// Rps-ui 
+
+// Audio  
+
+var clickAudio = new Audio("Audio/arcade-click.wav");
+var winAudio = new Audio("Audio/arcade-win.wav")
+var loseAudio = new Audio("Audio/arcade-lose.wav")
+
+
+// Event listeners
 
 const button1 = document.querySelector("#button-1")
 const button2 = document.querySelector("#button-2")
@@ -64,14 +75,16 @@ const button3 = document.querySelector("#button-3")
 
 button1.addEventListener("click", function() {
    playRound("Rock", getComputerChoice());
+   clickAudio.play();
 })
 
 button2.addEventListener("click", function() {
    playRound("Paper", getComputerChoice());
-
+   clickAudio.play();
 })
 
 button3.addEventListener("click", function() {
    playRound("Scissors", getComputerChoice());
+   clickAudio.play();
 })
 
